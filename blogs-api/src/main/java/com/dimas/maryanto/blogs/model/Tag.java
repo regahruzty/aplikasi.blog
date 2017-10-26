@@ -21,4 +21,5 @@ public class Tag {
 
     @Column(length = 20, nullable = false, unique = true)
     private String nama;
+
 }

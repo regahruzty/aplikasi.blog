@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "listTags")
+@ToString(exclude = {"listTags", "lectureList"})
 public class Page {
 
     @Id
@@ -40,4 +40,7 @@ public class Page {
             joinColumns = @JoinColumn(name = "page_id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "tag_id", nullable = false))
     private List<Tag> listTags = new ArrayList<>();
+
+    @OneToMany(mappedBy = "page")
+    private List<Lecture> lectureList = new ArrayList<>();
 }
