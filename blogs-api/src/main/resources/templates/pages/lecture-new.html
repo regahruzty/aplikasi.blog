@@ -1,0 +1,27 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--/*@thymesVar id="lecture" type="com.dimas.maryanto.blogs.model.Lecture"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title th:text="'Tambah materi di halaman '+ ${lecture.title}">Halaman</title>
+</head>
+<body>
+<form th:method="post" action="/pages/lecture/new" th:action="@{/pages/lecture/new}" th:object="${lecture}">
+    <input type="hidden" name="alsdjfsd" th:field="*{page.id}"/>
+    <div>
+        <label for="judul">Judul</label>
+        <input type="text" name="judul" id="judul" th:field="*{title}"/>
+    </div>
+    <div>
+        <label for="artikel">Text</label>
+        <textarea name="artikel" id="artikel" cols="30" rows="10" th:field="*{article}"></textarea>
+    </div>
+    <div>
+        <button type="submit">Kirim</button>
+    </div>
+</form>
+</body>
+</html>

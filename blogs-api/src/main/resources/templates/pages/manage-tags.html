@@ -1,0 +1,40 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--/*@thymesVar id="p" type="com.dimas.maryanto.blogs.model.Page"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title th:text="'Manage Tag in ' + ${p.judul}">Manage Page</title>
+</head>
+<body>
+<div>
+    <ul>
+        <li th:each="t : ${p.listTags}">
+            <span th:text="${t.nama}">Nama Tags</span>
+            <a href="/tags/remove/id" th:href="@{'/pages/'+${p.id}+'/'+${t.id}}">Hapus</a>
+        </li>
+    </ul>
+    <form action="/tags/manage/new" th:object="${p}" th:action="@{/pages/manage/tag/new}" th:method="post">
+        <input type="hidden" name="idPage" th:field="*{id}"/>
+        <div>
+            <label for="namaPage">Nama Page</label>
+            <input type="text" name="namaPage" id="namaPage" th:field="*{judul}" readonly="readonly"/>
+        </div>
+        <div>
+            <select name="tags" id="tag" th:field="*{listTags}" multiple="multiple">
+                <!--/*@thymesVar id="tagList" type="com.dimas.maryanto.blogs.controller.HomeController"*/-->
+                <!--/*@thymesVar id="tp" type="com.dimas.maryanto.blogs.model.Tag"*/-->
+                <option th:each=" tp : ${tagList}" th:value="${tp.id}">
+                    <span th:text="${tp.nama}"></span>
+                </option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Kirim</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

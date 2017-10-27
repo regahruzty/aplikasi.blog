@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--/*@thymesVar id="page" type="com.dimas.maryanto.blogs.model.Page"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title th:text="'Daftar Materi '+ ${page.judul}">Daftar materi</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>No</td>
+        <td>Judul</td>
+        <td>aksi</td>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="listMateri" type="com.dimas.maryanto.blogs.controller.HomeController"*/-->
+    <tr th:each=" m, iterStat : ${listMateri}">
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${m.title}"></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

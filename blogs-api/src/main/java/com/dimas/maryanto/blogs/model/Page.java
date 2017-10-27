@@ -41,6 +41,6 @@ public class Page {
             inverseJoinColumns = @JoinColumn(name = "tag_id", nullable = false))
     private List<Tag> listTags = new ArrayList<>();
 
-    @OneToMany(mappedBy = "page")
+    @OneToMany(mappedBy = "page", fetch = FetchType.LAZY)
     private List<Lecture> lectureList = new ArrayList<>();
 }

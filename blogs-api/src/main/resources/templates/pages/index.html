@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Home</title>
+</head>
+<body>
+
+
+<table>
+    <thead>
+    <tr>
+        <td>No</td>
+        <td>Judul</td>
+        <td>Message</td>
+        <td>Aksi</td>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="p" type="com.dimas.maryanto.blogs.model.Page"*/-->
+    <!--/*@thymesVar id="listPage" type="com.dimas.maryanto.blogs.controller.HomeController"*/-->
+    <tr th:each="p, iterStat : ${listPage}">
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${p.judul}"></td>
+        <td th:text="${p.message}"></td>
+
+        <td>
+            <a href="/tags/manage" th:href="@{'/tags/manage/'+${p.id}}">Tag</a>
+            &nbsp;
+            <a href="/lecture/manage/new" th:href="@{'/pages/'+${p.id}+'/lecture/new'}">Materi</a>
+            &nbsp;
+            <a href="/lecture/manage/new" th:href="@{'/pages/'+${p.id}+'/materi'}">Daftar materi</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

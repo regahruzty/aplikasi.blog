@@ -16,13 +16,13 @@ public class Lecture {
 
     @Id
     @GenericGenerator(name = "gen_lecture", strategy = "uuid2")
-    @GeneratedValue
+    @GeneratedValue(generator = "gen_lecture")
     private String id;
 
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
-    @Lob
+    //    @Lob
     private String article;
 
     @ManyToOne
